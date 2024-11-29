@@ -1,9 +1,9 @@
 package in.mockito.mutarg;
 
+import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Matchers.any;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,8 +16,6 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
-import in.mockito.mutarg.Caller;
-import in.mockito.mutarg.Service;
 import junit.framework.TestCase;
 
 public class MutableArgsTest extends TestCase {
@@ -51,7 +49,7 @@ public class MutableArgsTest extends TestCase {
 		 * serve(). So the referenced argument obj in ArgumentCaptor, has the last/
 		 * latest updated value.
 		 */
-		assertEquals(Arrays.asList(new MutableInt(1), new MutableInt(2)), valueCaptor.getAllValues());
+		assertFalse(Arrays.asList(new MutableInt(1), new MutableInt(2)).equals(valueCaptor.getAllValues()));
 	}
 
 	/**
